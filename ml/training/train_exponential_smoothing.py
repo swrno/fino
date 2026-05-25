@@ -137,3 +137,28 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# ── 8. Save model to ml/models ──────────────────────────────────────────────
+def save_model(best_alphas, output_path="ml/models/exponential_smoothing_model.pkl"):
+    """Save best alphas and model info"""
+    import os
+    import pickle
+    
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    
+    model_info = {
+        'best_alphas': best_alphas,
+        'alpha_range': ALPHA_RANGE.tolist(),
+        'forecast_steps': FORECAST_STEPS,
+        'targets': TARGETS
+    }
+    
+    with open(output_path, 'wb') as f:
+        pickle.dump(model_info, f)
+    
+    print(f"\n Model saved to: {output_path}")
+    return output_path
+
+# ── Add after print("Done.\n") in main() ────────────────────────────────────
+    # Save model
+    save_model(best_alphas)
