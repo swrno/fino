@@ -1,0 +1,203 @@
+// seed.ts - Realistic demo data for development
+import type { Transaction, Card } from '../types';
+
+function generateId(): string {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
+function daysAgo(days: number): string {
+  const d = new Date();
+  d.setDate(d.getDate() - days);
+  d.setHours(Math.floor(Math.random() * 14) + 8); // 8 AM - 10 PM
+  d.setMinutes(Math.floor(Math.random() * 60));
+  return d.toISOString();
+}
+
+export const SEED_CARD: Card = {
+  id: 'card-main-001',
+  name: 'HDFC Platinum',
+  last4: '6510',
+  type: 'debit',
+  bank: 'HDFC Bank',
+  color_start: '#8B5CF6',
+  color_end: '#06B6D4',
+  balance: 48520.75,
+  is_active: true,
+  created_at: new Date().toISOString(),
+};
+
+export const SEED_CARD_2: Card = {
+  id: 'card-credit-002',
+  name: 'ICICI Amazon Pay',
+  last4: '3847',
+  type: 'credit',
+  bank: 'ICICI Bank',
+  color_start: '#F97316',
+  color_end: '#EC4899',
+  balance: 125000.00,
+  is_active: true,
+  created_at: new Date().toISOString(),
+};
+
+export const SEED_TRANSACTIONS: Transaction[] = [
+  {
+    id: generateId(),
+    card_id: 'card-main-001',
+    name: 'Netflix',
+    amount: 649.00,
+    type: 'debit',
+    category: 'Subscription',
+    description: 'Monthly subscription',
+    date: daysAgo(0),
+    source: 'sms',
+    raw_sms: 'Rs.649.00 debited from a/c XX6510 towards Netflix',
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: generateId(),
+    card_id: 'card-main-001',
+    name: 'Swiggy',
+    amount: 386.50,
+    type: 'debit',
+    category: 'Food & Drinks',
+    description: 'Lunch order',
+    date: daysAgo(0),
+    source: 'sms',
+    raw_sms: 'Rs.386.50 debited from a/c XX6510 at Swiggy',
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: generateId(),
+    card_id: 'card-main-001',
+    name: 'Uber',
+    amount: 245.00,
+    type: 'debit',
+    category: 'Transport',
+    description: 'Ride to office',
+    date: daysAgo(1),
+    source: 'sms',
+    raw_sms: 'Rs.245.00 debited from a/c XX6510 via Uber',
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: generateId(),
+    card_id: 'card-main-001',
+    name: 'Salary Credit',
+    amount: 85000.00,
+    type: 'credit',
+    category: 'Other',
+    description: 'Monthly salary',
+    date: daysAgo(2),
+    source: 'sms',
+    raw_sms: 'Rs.85000.00 credited to a/c XX6510',
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: generateId(),
+    card_id: 'card-credit-002',
+    name: 'Amazon',
+    amount: 2499.00,
+    type: 'debit',
+    category: 'Shopping',
+    description: 'Wireless headphones',
+    date: daysAgo(2),
+    source: 'sms',
+    raw_sms: 'Rs.2499.00 spent on ICICI CC XX3847 at Amazon',
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: generateId(),
+    card_id: 'card-main-001',
+    name: 'Apollo Pharmacy',
+    amount: 780.00,
+    type: 'debit',
+    category: 'Health',
+    description: 'Medicines',
+    date: daysAgo(3),
+    source: 'manual',
+    raw_sms: null,
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: generateId(),
+    card_id: 'card-main-001',
+    name: 'Starbucks',
+    amount: 520.00,
+    type: 'debit',
+    category: 'Food & Drinks',
+    description: 'Coffee and pastry',
+    date: daysAgo(3),
+    source: 'manual',
+    raw_sms: null,
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: generateId(),
+    card_id: 'card-main-001',
+    name: 'Spotify',
+    amount: 119.00,
+    type: 'debit',
+    category: 'Subscription',
+    description: 'Premium subscription',
+    date: daysAgo(4),
+    source: 'sms',
+    raw_sms: 'Rs.119.00 debited from a/c XX6510 towards Spotify',
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: generateId(),
+    card_id: 'card-main-001',
+    name: 'PVR Cinemas',
+    amount: 850.00,
+    type: 'debit',
+    category: 'Entertainment',
+    description: 'Movie tickets',
+    date: daysAgo(5),
+    source: 'sms',
+    raw_sms: 'Rs.850.00 debited from a/c XX6510 at PVR Cinemas',
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: generateId(),
+    card_id: 'card-main-001',
+    name: 'Metro Card',
+    amount: 500.00,
+    type: 'debit',
+    category: 'Transport',
+    description: 'Metro recharge',
+    date: daysAgo(5),
+    source: 'manual',
+    raw_sms: null,
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: generateId(),
+    card_id: 'card-credit-002',
+    name: 'Myntra',
+    amount: 1899.00,
+    type: 'debit',
+    category: 'Shopping',
+    description: 'Shoes',
+    date: daysAgo(6),
+    source: 'sms',
+    raw_sms: 'Rs.1899.00 spent on ICICI CC XX3847 at Myntra',
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: generateId(),
+    card_id: 'card-main-001',
+    name: 'Freelance Payment',
+    amount: 15000.00,
+    type: 'credit',
+    category: 'Other',
+    description: 'Design project',
+    date: daysAgo(7),
+    source: 'manual',
+    raw_sms: null,
+    created_at: new Date().toISOString(),
+  },
+];
