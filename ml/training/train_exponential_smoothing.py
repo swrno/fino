@@ -10,7 +10,7 @@ import pandas as pd
 import numpy as np
 
 # ── Config ────────────────────────────────────────────────────────────────────
-DATA_PATH      = "data 1.csv"
+DATA_PATH      = "data_1.csv"
 TRAIN_RATIO    = 0.8
 ALPHA_RANGE    = np.round(np.arange(0.1, 1.0, 0.1), 1)
 FORECAST_STEPS = 3
