@@ -160,5 +160,8 @@ def save_model(best_alphas, output_path="ml/models/exponential_smoothing_model.p
     return output_path
 
 # ── Add after print("Done.\n") in main() ────────────────────────────────────
+    print("\nDone.\n")
     # Save model
     save_model(best_alphas)
+
+    return best_alphas
